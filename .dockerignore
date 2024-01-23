@@ -1,0 +1,34 @@
+# TypeScript
+*.tsbuildinfo
+dist
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Docker
+*.log
+.env
+docker-compose.override.yml
+docker-compose.*.yml
+.docker/
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+.dockerignore
+.gitignore
+grades.json
+LICENSE
+README.md
