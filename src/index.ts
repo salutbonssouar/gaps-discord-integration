@@ -41,15 +41,19 @@ async function retrieveAndLogId() {
 
     const branches: Branche[] = parseGrade(grades);
 
-    if (fs.existsSync("grades.json")) {
-      const json = fs.readFileSync("grades.json", "utf8");
+    if (!fs.existsSync("./data")) {
+      fs.mkdirSync("./data");
+    }
+
+    if (fs.existsSync("./data/grades.json")) {
+      const json = fs.readFileSync("./data/grades.json", "utf8");
       const localBranches: Branche[] = JSON.parse(json);
 
       const change: [boolean, boolean, [Branche, SubBranche, Exam]?] =
         compareBranches(branches, localBranches);
 
       if (change[0]) {
-        fs.writeFileSync("grades.json", JSON.stringify(branches, null, 2));
+        fs.writeFileSync("./data/grades.json", JSON.stringify(branches, null, 2));
       }
       if (change[1] && change[2]) {
         if (change[2][2].average !== "-") {
@@ -62,7 +66,7 @@ async function retrieveAndLogId() {
         }
       }
     } else {
-      fs.writeFileSync("grades.json", JSON.stringify(branches, null, 2));
+      fs.writeFileSync("./data/grades.json", JSON.stringify(branches, null, 2));
     }
   } catch (error) {
     console.error(error);
