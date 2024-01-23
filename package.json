@@ -1,0 +1,20 @@
+{
+  "name": "heigvd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jsdom": "^21.1.6",
+    "@types/node": "^20.10.4"
+  },
+  "dependencies": {
+    "axios": "^1.6.2",
+    "jsdom": "^23.0.1"
+  }
+}
