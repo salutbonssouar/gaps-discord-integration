@@ -27,6 +27,7 @@ docker-compose.*.yml
 .DS_Store
 Thumbs.db
 
+data/
 .dockerignore
 .gitignore
 grades.json
