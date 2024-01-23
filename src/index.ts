@@ -53,7 +53,10 @@ async function retrieveAndLogId() {
         compareBranches(branches, localBranches);
 
       if (change[0]) {
-        fs.writeFileSync("./data/grades.json", JSON.stringify(branches, null, 2));
+        fs.writeFileSync(
+          "./data/grades.json",
+          JSON.stringify(branches, null, 2)
+        );
       }
       if (change[1] && change[2]) {
         if (change[2][2].average !== "-") {
@@ -178,20 +181,29 @@ function compareBranches(
         const localBranche = localBranches.find((b) => b.name === branche.name);
         if (!localBranche) {
           console.log(`Branche ${branche.name} has been added`);
-          return [true, false];
+          localBranches.push({
+            name: branche.name,
+            average: branche.average,
+            subBranches: [],
+          });
         }
 
-        const localSubBranche = localBranche.subBranches.find(
+        const localSubBranche = localBranche?.subBranches.find(
           (sb) => sb.name === subBranche.name
         );
         if (!localSubBranche) {
           console.log(
             `SubBranche ${subBranche.name} in Branche ${branche.name} has been added`
           );
-          return [true, false];
+          localBranche?.subBranches.push({
+            name: subBranche.name,
+            average: subBranche.average,
+            weight: subBranche.weight,
+            exams: [],
+          });
         }
 
-        const localExam = localSubBranche.exams.find(
+        const localExam = localSubBranche?.exams.find(
           (e) => e.date === exam.date && e.description === exam.description
         );
         if (!localExam) {
